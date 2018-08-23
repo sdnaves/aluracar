@@ -94,16 +94,20 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.selecionaCarro = function (carro) {
         console.log(carro);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__escolha_escolha__["a" /* EscolhaPage */]);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__escolha_escolha__["a" /* EscolhaPage */], {
+            carroSelecionado: carro
+        });
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let carro of carros" (click)="selecionaCarro(carro)">\n      <h2>{{carro.nome}}</h2>\n      <p>R$ {{carro.preco}}</p>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let carro of carros" (click)="selecionaCarro(carro)">\n\n      <h2>{{carro.nome}}</h2>\n\n      <p>R$ {{carro.preco}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_carros_service_carros_service__["a" /* CarrosServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_carros_service_carros_service__["a" /* CarrosServiceProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_carros_service_carros_service__["a" /* CarrosServiceProvider */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -137,10 +141,9 @@ var CarrosServiceProvider = /** @class */ (function () {
     };
     CarrosServiceProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
     ], CarrosServiceProvider);
     return CarrosServiceProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=carros-service.js.map
@@ -267,7 +270,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -296,28 +299,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the EscolhaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var EscolhaPage = /** @class */ (function () {
     function EscolhaPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.carro = this.navParams.get('carroSelecionado');
     }
     EscolhaPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad EscolhaPage');
     };
     EscolhaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-escolha',template:/*ion-inline-start:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\escolha\escolha.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Escolha</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\escolha\escolha.html"*/,
+            selector: 'page-escolha',template:/*ion-inline-start:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\escolha\escolha.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Escolha</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-slides pager="true">\n\n    <ion-slide *ngFor="let foto of carro.fotos">\n\n      <img src="{{foto}}" />\n\n    </ion-slide>\n\n  </ion-slides>\n\n\n\n  <ion-item-group>\n\n    <ion-item-divider color="light">\n\n      <ion-icon name="car"></ion-icon>\n\n      VEÍCULO\n\n    </ion-item-divider>\n\n    <ion-item>{{carro.nome}}</ion-item>\n\n    <ion-item>R$ {{carro.preco}}</ion-item>\n\n  </ion-item-group>\n\n\n\n  <ion-item-group>\n\n    <ion-item-divider color="light">\n\n      <ion-icon name="options"></ion-icon>\n\n      ACESSÓRIOS\n\n    </ion-item-divider>\n\n    <ion-item>Assessório 1</ion-item>\n\n    <ion-item>Assessório 2</ion-item>\n\n  </ion-item-group>\n\n\n\n  <ion-item-divider color="light">\n\n    <span item-right>TOTAL: R$ {{carro.preco}}</span>\n\n  </ion-item-divider>\n\n\n\n  <ion-fab right bottom>\n\n    <button ion-fab>\n\n      <ion-icon name="arrow-dropright"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\silas.naves\Desktop\SDN\SDN\ionic\Outros\aluracar\src\pages\escolha\escolha.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
     ], EscolhaPage);
     return EscolhaPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=escolha.js.map
