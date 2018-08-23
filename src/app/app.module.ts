@@ -6,14 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { EscolhaPage } from '../pages/escolha/escolha';
 
-// -- New Imports --
 import { HttpClientModule } from '@angular/common/http';
+import { CarrosServiceProvider } from '../providers/carros-service/carros-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EscolhaPage
   ],
   imports: [
     BrowserModule,
@@ -23,12 +25,14 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EscolhaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CarrosServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Carro } from '../../models/carro';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { HttpErrorResponse } from '@angular/common/http'
+import { CarrosServiceProvider } from '../../providers/carros-service/carros-service';
+import { NavLifeCycles } from '../../utils/ionic/nav/nav-lifecycles';
+import { EscolhaPage } from '../escolha/escolha';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements NavLifeCycles {
 
   public carros: Carro[];
 
   constructor(public navCtrl: NavController,
-              private http: HttpClient,
               private loadCtrl: LoadingController,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              private carrosServ: CarrosServiceProvider) { }
 
+  ionViewDidLoad() {
     let loading = this.loadCtrl.create({
       content: 'Carregando Carros...'
     });
 
     loading.present();
 
-    this.http.get<Carro[]>('http://localhost:8080/api/carro/listaTodos').subscribe(
+    this.carrosServ.lista().subscribe(
       (carros) => {
         this.carros = carros;
 
@@ -41,6 +45,11 @@ export class HomePage {
         }).present();
       }
     );
+  }
+
+  selecionaCarro(carro: Carro){
+    console.log(carro);
+    this.navCtrl.push(EscolhaPage);
   }
 
 }
