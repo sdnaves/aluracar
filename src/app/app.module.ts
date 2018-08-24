@@ -12,6 +12,7 @@ import { CarrosServiceProvider } from '../providers/carros-service/carros-servic
 import { AgendamentosServiceProvider } from '../providers/agendamentos-service/agendamentos-service';
 
 import 'rxjs/add/operator/finally';
+import { IonicStorageModule } from '@ionic/storage'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,12 @@ import 'rxjs/add/operator/finally';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name:'aluracar',
+      storeName: 'agendamentos',
+      driverOrder: ['indexeddb']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
