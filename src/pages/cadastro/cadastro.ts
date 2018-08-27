@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Alert, Button } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ionic-angular';
 import { Carro } from '../../models/carro';
 import { AgendamentosServiceProvider } from '../../providers/agendamentos-service/agendamentos-service';
 import { HomePage } from '../home/home';
 import { Agendamento } from '../../models/agendamento';
+
+import { AgendamentoDaoProvider } from '../../providers/agendamento-dao/agendamento-dao';
 
 @IonicPage()
 @Component({
@@ -25,7 +27,8 @@ export class CadastroPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private alertCtrl: AlertController,
-              private agendamentoService: AgendamentosServiceProvider) {
+              private agendamentoService: AgendamentosServiceProvider,
+              private agendamentoDao: AgendamentoDaoProvider) {
 
     this.carro = this.navParams.get('carroSelecionado');
     this.precoTotal = this.navParams.get('precoTotal');
@@ -50,7 +53,9 @@ export class CadastroPage {
       emailCliente: this.email,
       modeloCarro: this.carro.nome,
       precoTotal: this.precoTotal,
-      data: this.data
+      data: this.data,
+      confirmado: false,
+      enviado: false
     }
 
     this.alerta = this.alertCtrl.create({
@@ -65,20 +70,30 @@ export class CadastroPage {
 
     let mensagem = "";
 
-    this.agendamentoService.agenda(agendamento)
-      .finally(
-        () => {
-          this.alerta.setSubTitle(mensagem);
-          this.alerta.present();
-        }
-      )
-      .subscribe(
-        () => {
-          mensagem = "Agendado com Sucesso!";
-        },
-        () => {
-          mensagem = "Falha ao Agendar!";
-        }
-      );
+    this.agendamentoDao
+        .isDuplicado(agendamento)
+        .mergeMap( (duplicado) => {
+          if (duplicado) {
+            throw new Error('Agendamento Existente!')
+          }
+          return this.agendamentoService.agenda(agendamento);
+        })
+        .mergeMap( (valor) => {
+          let observable = this.agendamentoDao.salva(agendamento);
+          if (valor instanceof Error) {
+            throw valor;
+          }
+          return observable;
+        })
+        .finally(
+          () => {
+            this.alerta.setSubTitle(mensagem);
+            this.alerta.present();
+          }
+        )
+        .subscribe(
+          () => { mensagem = "Agendado com Sucesso!"; },
+          (erro: Error) => { mensagem = erro.message; }
+        );
   }
 }

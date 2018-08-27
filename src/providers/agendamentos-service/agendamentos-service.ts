@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/observable';
+import { Agendamento } from '../../models/agendamento';
 
 @Injectable()
 export class AgendamentosServiceProvider {
@@ -10,7 +12,10 @@ export class AgendamentosServiceProvider {
     
   }
 
-  agenda(agendamento) {
-    return this.http.post(this.url+"/agendamento/agenda", agendamento);
+  agenda(agendamento: Agendamento) {
+    return this.http
+            .post(this.url+"/agendamento/agenda", agendamento)
+            .do( () => agendamento.enviado = true)
+            .catch( (erro) => Observable.of(new Error("Falha ao Agendar!")));
   }
 }
