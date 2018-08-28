@@ -23,6 +23,8 @@ import 'rxjs/add/observable/of';
 import { LoginPage } from '../pages/login/login';
 import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-service';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
+import { Vibration } from '@ionic-native/vibration';
+import { DatePicker } from '@ionic-native/date-picker';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     AgendamentosServiceProvider,
     AgendamentoDaoProvider,
     UsuariosServiceProvider,
-    ApiServiceProvider
+    ApiServiceProvider,
+    Vibration,
+    DatePicker
   ]
 })
 export class AppModule {}
