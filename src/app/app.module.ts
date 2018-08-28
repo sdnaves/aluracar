@@ -20,11 +20,15 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
+import { LoginPage } from '../pages/login/login';
+import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-service';
+import { ApiServiceProvider } from '../providers/api-service/api-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import 'rxjs/add/observable/of';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -47,7 +52,9 @@ import 'rxjs/add/observable/of';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CarrosServiceProvider,
     AgendamentosServiceProvider,
-    AgendamentoDaoProvider
+    AgendamentoDaoProvider,
+    UsuariosServiceProvider,
+    ApiServiceProvider
   ]
 })
 export class AppModule {}

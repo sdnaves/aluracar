@@ -25678,6 +25678,117 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+myapp #cabecalho-menu .item-inner {
+  border: none;
+}
+
+myapp .cabecalho-menu {
+  background-image: url("../assets/imgs/material-design-background.jpg");
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+myapp .cabecalho-menu ion-avatar img {
+  width: 50px;
+  height: 50px;
+}
+
+myapp .cabecalho-menu h2 {
+  color: white;
+  font-weight: bold;
+}
+
+myapp .cabecalho-menu p {
+  color: #eee;
+}
+
 page-escolha ion-slides {
   height: auto;
+}
+
+page-lista-agendamentos .falha {
+  color: red;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+page-login .splash-bg {
+  position: relative;
+  background: url("../assets/imgs/splashbg.png") no-repeat transparent;
+  background-size: cover;
+  height: 40%;
+  z-index: 1;
+  background-repeat: repeat-x;
+  -webkit-animation: animatedBackground 40s linear infinite;
+  animation: animatedBackground 40s linear infinite;
+}
+
+@-webkit-keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+page-login .splash-info {
+  position: relative;
+  z-index: 2;
+  margin-top: -64px;
+  text-align: center;
+}
+
+page-login .splash-logo {
+  margin: auto auto 10px;
+  background: url("../assets/imgs/appicon.png") repeat transparent;
+  background-size: 100%;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+page-login .splash-intro {
+  font-size: 18px;
+  font-weight: bold;
+  max-width: 80%;
+  margin: auto;
+}
+
+page-login button.login {
+  margin-top: 25px;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+page-perfil .avatar-wrapper {
+  position: relative;
+  width: 200px;
+  margin: auto;
+}
+
+page-perfil .avatar-wrapper ion-avatar img {
+  background-color: #DDDDDD;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+page-perfil .avatar-wrapper .btn-tirar-foto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
 }
