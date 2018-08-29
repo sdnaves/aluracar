@@ -48,6 +48,8 @@
 		74CB8013AF9C4F12AB0BE201 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781FC113E91A454F959C105B /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8F32E94D382E492099C86D34 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A2EDC397594F67B8656E95 /* CoreLocation.framework */; };
 		8BF5A297C09D46B5909FC343 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B839F51B9A4FB3907AAC2B /* AVFoundation.framework */; };
+		8CE67B8F1F8B4C0EA1CB5170 /* OneSignalPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4F6E28BC9B4F47AFAE3918 /* OneSignalPush.m */; };
+		F178AEFEBCFC4D20BA47F1BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3199B8D567C34F81B4520215 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +150,9 @@
 		781FC113E91A454F959C105B /* ImageIO.framework */ = {isa = PBXFileReference; name = "ImageIO.framework"; path = "System/Library/Frameworks/ImageIO.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		E9A2EDC397594F67B8656E95 /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		43B839F51B9A4FB3907AAC2B /* AVFoundation.framework */ = {isa = PBXFileReference; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		7F4F6E28BC9B4F47AFAE3918 /* OneSignalPush.m */ = {isa = PBXFileReference; name = "OneSignalPush.m"; path = "onesignal-cordova-plugin/OneSignalPush.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		5D10D64E8B1548E196C23A26 /* OneSignalPush.h */ = {isa = PBXFileReference; name = "OneSignalPush.h"; path = "onesignal-cordova-plugin/OneSignalPush.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		3199B8D567C34F81B4520215 /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +167,7 @@
 				74CB8013AF9C4F12AB0BE201 /* ImageIO.framework in Frameworks */,
 				8F32E94D382E492099C86D34 /* CoreLocation.framework in Frameworks */,
 				8BF5A297C09D46B5909FC343 /* AVFoundation.framework in Frameworks */,
+				F178AEFEBCFC4D20BA47F1BF /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +245,7 @@
 				781FC113E91A454F959C105B /* ImageIO.framework */,
 				E9A2EDC397594F67B8656E95 /* CoreLocation.framework */,
 				43B839F51B9A4FB3907AAC2B /* AVFoundation.framework */,
+				3199B8D567C34F81B4520215 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -317,6 +324,8 @@
 				E185CFA5B5A74519865F6BE3 /* CDVCamera.h */,
 				B8A55DC382FD40128A7A6DF8 /* CDVJpegHeaderWriter.h */,
 				46FCFD0834CA4AE89ED6A0A0 /* CDVExif.h */,
+				7F4F6E28BC9B4F47AFAE3918 /* OneSignalPush.m */,
+				5D10D64E8B1548E196C23A26 /* OneSignalPush.h */,
 			);
 			name = Plugins;
 			path = "aluracar/Plugins";
@@ -455,6 +464,7 @@
 				B008489154DB4ADF9B681202 /* UIImage+CropScaleOrientation.m in Sources */,
 				437E59D783444CE5812DF020 /* CDVCamera.m in Sources */,
 				ACA75D03D0F04A6DB6ADB341 /* CDVJpegHeaderWriter.m in Sources */,
+				8CE67B8F1F8B4C0EA1CB5170 /* OneSignalPush.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,18 @@ export class ListaAgendamentosPage {
                        );
   }
 
+  ionViewDidEnter() {
+    setTimeout(() => this.atualizaAgendamentos(), 5000);
+  }
+
+  atualizaAgendamentos() {
+    this.agendamentos.filter((agendamento: Agendamento) => agendamento.confirmado)
+        .forEach((agendamento: Agendamento) => {
+          agendamento.visualizado = true;
+          this.agendamentoDao.salva(agendamento);
+        })
+  }
+
   reenvia (agendamento: Agendamento){
 
     this.alerta = this.alertCtrl.create({
