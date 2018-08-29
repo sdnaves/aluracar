@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 import { ApiServiceProvider } from '../api-service/api-service';
 
+const CHAVE = 'avatar-usuario'
+
 @Injectable()
 export class UsuariosServiceProvider {
 
@@ -21,5 +23,13 @@ export class UsuariosServiceProvider {
 
   getUsuarioLogado() {
     return this.usuarioLogado;
+  }
+
+  salvaAvatar(avatar) {
+    localStorage.setItem(CHAVE, avatar);
+  }
+
+  obtemAvatar() {
+    return localStorage.getItem(CHAVE) ? localStorage.getItem(CHAVE) : 'assets/imgs/avatar-padrao.jpg';
   }
 }
